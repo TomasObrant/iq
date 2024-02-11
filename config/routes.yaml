@@ -1,0 +1,7 @@
+api_login_check:
+    path: /api/auth/login
+
+applications:
+    path: /api/applications
+    controller: App\Controller\ApplicationController::getAllApplications
+    methods: [GET]

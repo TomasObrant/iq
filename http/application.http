@@ -1,0 +1,4 @@
+### GET applications
+GET http://localhost:8876/api/applications
+Accept: application/json
+Authorization: Bearer {{auth_token}}

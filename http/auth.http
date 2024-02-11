@@ -1,0 +1,10 @@
+### GET login_check
+POST http://localhost:8876/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"admin@admin.ru",
+  "password":"ghbdtn"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
