@@ -26,8 +26,8 @@ class Application extends AbstractEntity
     #[ORM\ManyToOne(inversedBy: 'applications')]
     private ?ApplicationStatus $status = null;
 
-    #[ORM\OneToOne(inversedBy: 'application', cascade: ['persist', 'remove'])]
-    private ?Comment $comment = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $comment = null;
 
     public function getId(): ?int
     {
@@ -82,12 +82,12 @@ class Application extends AbstractEntity
         return $this;
     }
 
-    public function getComment(): ?Comment
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(?Comment $comment): self
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
 

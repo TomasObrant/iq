@@ -1,7 +1,33 @@
 api_login_check:
     path: /api/auth/login
 
-applications:
-    path: /api/applications
+# application
+application_create:
+    path: /api/application-create
+    controller: App\Controller\ApplicationController::createApplication
+    methods: [POST]
+
+applications_show:
+    path: /api/applications-show
     controller: App\Controller\ApplicationController::getAllApplications
     methods: [GET]
+
+applications_show_user:
+    path: /api/applications-show-user
+    controller: App\Controller\ApplicationController::getUserApplications
+    methods: [GET]
+
+application_show:
+    path: /api/application-show/{id}
+    controller: App\Controller\ApplicationController::getApplication
+    methods: [GET]
+
+applications_status_check:
+    path: /api/application-status-check/{id}
+    controller: App\Controller\ApplicationController::getApplicationStatus
+    methods: [GET]
+
+applications_status_edit:
+    path: /api/application-status-edit
+    controller: App\Controller\ApplicationController::editApplicationStatus
+    methods: [POST]
