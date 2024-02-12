@@ -1,34 +1,29 @@
-### application-create
+### создаем новую заявку
 POST http://localhost:8876/api/application-create
 Content-Type: application/json
 Authorization: Bearer {{auth_token}}
 
 {
-  "topic": "новый топик",
-  "message": "месстаге новый"
+  "topic": "новый топик 2 4",
+  "message": "месстаге новый 3 4"
 }
 
-### applications-show
-GET http://localhost:8876/api/applications-show
-Content-Type: application/json
-Authorization: Bearer {{auth_token}}
-
-### applications-show-user
+### получение списка своих заявок
 GET http://localhost:8876/api/applications-show-user
 Content-Type: application/json
 Authorization: Bearer {{auth_token}}
 
-### application-show/{id}
-GET http://localhost:8876/api/application-show/1
-Content-Type: application/json
-Authorization: Bearer {{auth_token}}
-
-### /api/application-status-check/{id}
+### получить статус заявки
 GET http://localhost:8876/api/application-status-check/1
 Content-Type: application/json
 Authorization: Bearer {{auth_token}}
 
-### /api/application-status-edit
+### просмотр всех заявок / менеджер
+GET http://localhost:8876/api/applications-show
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+### изменение статуса / менеджер
 POST http://localhost:8876/api/application-status-edit
 Content-Type: application/json
 Authorization: Bearer {{auth_token}}
@@ -38,3 +33,13 @@ Authorization: Bearer {{auth_token}}
   "status": 3,
   "comment": "новый коммент"
 }
+
+### просмотр заявки пользователем
+GET http://localhost:8876/api/application-show/1
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+
+
+
+

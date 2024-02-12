@@ -35,7 +35,7 @@ final class Version20240211112034 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SCHEMA public');
+//        $this->addSql('CREATE SCHEMA public');
         $this->addSql('DROP SEQUENCE application_id_seq CASCADE');
         $this->addSql('ALTER TABLE application DROP CONSTRAINT FK_A45BDDC161220EA6');
         $this->addSql('ALTER TABLE application DROP CONSTRAINT FK_A45BDDC16BF700BD');

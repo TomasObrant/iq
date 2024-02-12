@@ -66,10 +66,9 @@ class ApplicationRepository extends ServiceEntityRepository
     public function findAllApplications(int $userId = null, int $applicationId = null): array
     {
         $qb = $this->createQueryBuilder('a')
-            ->select('a.id', 'a.topic', 'a.message', 'a.createdAt')
-            ->addSelect('s.name as status', 'c.text as comment_text', 'u.email as creator_email')
+            ->select('a.id', 'a.topic', 'a.message', 'a.comment', 'a.createdAt')
+            ->addSelect('s.name as status', 'u.email as creator_email')
             ->leftJoin('a.status', 's')
-            ->leftJoin('a.comment', 'c')
             ->leftJoin('a.creator', 'u');
 
         if ($userId !== null) {

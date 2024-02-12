@@ -33,7 +33,7 @@ final class Version20240211210826 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SCHEMA public');
+//        $this->addSql('CREATE SCHEMA public');
         $this->addSql('DROP SEQUENCE application_status_id_seq CASCADE');
         $this->addSql('CREATE SEQUENCE comment_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE comment (id INT NOT NULL, manager_id INT DEFAULT NULL, text TEXT DEFAULT NULL, PRIMARY KEY(id))');

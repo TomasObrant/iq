@@ -13,3 +13,8 @@ config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
 
 docker/nginx/logs/*.log
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###

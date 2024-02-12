@@ -10,8 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Exception;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ApplicationController extends AbstractController
 {
@@ -19,7 +19,6 @@ class ApplicationController extends AbstractController
         protected ResponseService $responseService,
     ) {}
 
-//    #[IsGranted("ROLE_USER")]
     public function createApplication(#[CurrentUser] ?User $user, Request $request, ApplicationService $applicationService): JsonResponse
     {
         try {
@@ -30,9 +29,13 @@ class ApplicationController extends AbstractController
         }
     }
 
-//    #[IsGranted("ROLE_MANAGER")]
+
     public function getAllApplications(ApplicationService $applicationService): JsonResponse
     {
+        if (!$this->isGranted('ROLE_MANAGER')) {
+            throw new AccessDeniedException('У вас нет прав на выполнение этого действия');
+        }
+
         try {
             $result = $applicationService->getAllApplications();
             return $this->responseService->setData($result)->getResponse();
@@ -41,7 +44,6 @@ class ApplicationController extends AbstractController
         }
     }
 
-//    #[IsGranted("ROLE_USER")]
     public function getUserApplications(#[CurrentUser] ?User $user, ApplicationService $applicationService): JsonResponse
     {
         try {
@@ -52,7 +54,6 @@ class ApplicationController extends AbstractController
         }
     }
 
-//    #[IsGranted("ROLE_USER")]
     public function getApplication(int $id, ApplicationService $applicationService): JsonResponse
     {
         try {
@@ -63,7 +64,6 @@ class ApplicationController extends AbstractController
         }
     }
 
-//    #[IsGranted("ROLE_USER")]
     public function getApplicationStatus(int $id, ApplicationService $applicationService): JsonResponse
     {
         try {
@@ -74,9 +74,13 @@ class ApplicationController extends AbstractController
         }
     }
 
-//    #[IsGranted("ROLE_MANAGER")]
+
     public function editApplicationStatus(Request $request, ApplicationService $applicationService): JsonResponse
     {
+        if (!$this->isGranted('ROLE_MANAGER')) {
+            throw new AccessDeniedException('У вас нет прав на выполнение этого действия');
+        }
+
         try {
             $result = $applicationService->editApplicationStatus($request->toArray());
             return $this->responseService->setData($result)->getResponse();
