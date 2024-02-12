@@ -30,5 +30,6 @@ EXPOSE 9000
 CMD bash -c "\
     composer install && \
     if [ ! -f config/jwt/private.pem ]; then php bin/console lexik:jwt:generate-keypair; fi && \
+    y | php bin/console d:m:m && \
     php-fpm \
 "

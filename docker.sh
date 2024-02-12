@@ -5,8 +5,18 @@ ACTION="action_$KEY"
 
 # MAIN ACTIONS
 action_up() {
-  mkdir docker/nginx/logs
+   if [ ! -d "config/jwt" ]; then
+      mkdir config/jwt
+   fi
+   if [ ! -d "db/db-data" ]; then
+      mkdir db/db-data
+   fi
+   if [ ! -d "docker/nginx/logs" ]; then
+      mkdir docker/nginx/logs
+   fi
+
   action_down
+
   docker-compose up -d --build --force-recreate
 }
 
