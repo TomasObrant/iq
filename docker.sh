@@ -5,6 +5,7 @@ ACTION="action_$KEY"
 
 # MAIN ACTIONS
 action_up() {
+  mkdir docker/nginx/logs
   action_down
   docker-compose up -d --build --force-recreate
 }
