@@ -33,7 +33,7 @@ class ApplicationController extends AbstractController
     public function getAllApplications(ApplicationService $applicationService): JsonResponse
     {
         if (!$this->isGranted('ROLE_MANAGER')) {
-            throw new AccessDeniedException('У вас нет прав на выполнение этого действия');
+            return new JsonResponse(['error' => 'У вас нет прав на выполнение этого действия'], 403);
         }
 
         try {
@@ -78,7 +78,7 @@ class ApplicationController extends AbstractController
     public function editApplicationStatus(Request $request, ApplicationService $applicationService): JsonResponse
     {
         if (!$this->isGranted('ROLE_MANAGER')) {
-            throw new AccessDeniedException('У вас нет прав на выполнение этого действия');
+            return new JsonResponse(['error' => 'У вас нет прав на выполнение этого действия'], 403);
         }
 
         try {
